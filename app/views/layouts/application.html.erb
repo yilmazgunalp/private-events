@@ -9,6 +9,24 @@
   </head>
 
   <body>
+
+
+
+<%= User.find_by_username(session[:user_id]).username + ' is signed in' if session[:user_id]  %>
+
+  
+  <nav>
+
+    <span> <%=link_to "Events", events_path %> </span>
+    <span> <%=link_to "Create_Event", new_event_path if session[:user_id] %> </span>
+    <span><%= link_to "Login", root_url if !session[:user_id]%></span>
+    <span><%=link_to "Logout", logout_path if session[:user_id] %></span>
+    <span><%= link_to "Sign Up", new_user_path if !session[:user_id]%></span>
+  </nav>
+<%= flash[:info] if !flash.empty? %>
+<%= flash[:danger] if !flash.empty? %>
     <%= yield %>
   </body>
 </html>
+
+

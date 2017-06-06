@@ -1,0 +1,7 @@
+
+<% if !@event.invitees.include?(user) %>
+<p><%=user.username %> 
+
+<%=link_to "Invite", invite_path(user: user.id, event: @event.id)  %>
+</p>
+<%end %>

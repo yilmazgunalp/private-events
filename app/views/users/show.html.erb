@@ -1,0 +1,32 @@
+<h4>Welcome to <%=@user.username %> 's page </h4>
+
+<h3>See my events</h3>
+
+<% @user.events.each do |e| %>
+<div>
+<%=e.place %>
+<%=e.date %>
+</div>
+<%end %>
+
+<p>
+<%=@user.username + " has " + pluralize(@user.events.count, 'Event')  %></p>
+
+<%=@user.username + " is attending " + pluralize(@user.attended_events.count, 'attendance')  %></p>
+
+<h2>Upcoming Events</h2>
+<% @user.upcoming_events.each do |e| %>
+
+<p><%=e.place  %></p>
+<p><%=e.date.to_s(:short) %></p>
+	
+<% end %>
+
+<h2>previous events</h2>
+
+<% @user.previous_events.each do |e| %>
+
+<p><%=e.place  %></p>
+<p><%=e.date %></p>
+	
+<% end %>

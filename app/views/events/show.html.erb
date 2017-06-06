@@ -1,0 +1,22 @@
+<h1>an Event by <%=@event.creator.username %></h1>
+
+<%= 'This event has ' +  pluralize(@event.attendees.count, 'attendee')  %></p>
+
+<%@event.attendees.each do |a| %>
+
+<p><%=a.username %></p>
+
+
+<%end %>
+
+<p>Pending invitations</p>
+
+<%@event.invitees.each do |a| %>
+
+<p><%=a.username %></p>
+
+
+<%end %>
+
+
+<p><%=link_to "Invite Others to this event", invite_path(event: @event.id) %></p>
